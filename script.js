@@ -172,7 +172,7 @@ function renderTodos() {
 
     if (filteredTodos.length === 0) {
         todoList.innerHTML = '<li class="todo-item"><p style="color: #999; margin: auto;">No todos found! 🎉</p></li>';
-        updateStats();
+        updateStats(filteredTodos);
         return;
     }
 
@@ -210,11 +210,11 @@ function renderTodos() {
         todoList.appendChild(li);
     });
 
-    updateStats();
+    updateStats(filteredTodos);
 }
 
 // Update Statistics
-function updateStats() {
+function updateStats(filteredTodos = todos) {
     const total = todos.length;
     const completed = todos.filter(t => t.completed).length;
     const pending = total - completed;
