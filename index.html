@@ -3,40 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Todo App</title>
+    <title>Advanced Todo App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="todo-app">
-            <h1>📝 My Todo App</h1>
-            
-            <!-- Input Section -->
-            <div class="input-section">
-                <input 
-                    type="text" 
-                    id="todoInput" 
-                    placeholder="Add a new todo..." 
-                    class="todo-input"
-                >
-                <button id="addBtn" class="add-btn">Add</button>
+            <!-- Header with Dark Mode Toggle -->
+            <div class="header">
+                <h1>📝 Advanced Todo App</h1>
+                <button id="darkModeToggle" class="dark-mode-btn">🌙 Dark Mode</button>
             </div>
 
-            <!-- Filter Buttons -->
+            <!-- Statistics Dashboard -->
+            <div class="stats-dashboard">
+                <div class="stat-card">
+                    <span class="stat-label">Total</span>
+                    <span class="stat-value" id="totalStats">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Completed</span>
+                    <span class="stat-value" id="completedStats">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value" id="pendingStats">0</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Completion %</span>
+                    <span class="stat-value" id="percentStats">0%</span>
+                </div>
+            </div>
+
+            <!-- Input Section with Priority & Date -->
+            <div class="input-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        placeholder="Add a new todo..." 
+                        class="todo-input"
+                    >
+                    <input 
+                        type="date" 
+                        id="todoDate" 
+                        class="todo-date"
+                    >
+                    <select id="todoPriority" class="todo-priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <input 
+                        type="text" 
+                        id="todoCategory" 
+                        placeholder="Category (Work, Personal...)" 
+                        class="todo-category"
+                    >
+                    <button id="addBtn" class="add-btn">Add Todo</button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-section">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="🔍 Search todos..." 
+                    class="search-input"
+                >
+            </div>
+
+            <!-- Filter & Sort Section -->
             <div class="filter-section">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="active">Active</button>
-                <button class="filter-btn" data-filter="completed">Completed</button>
+                <div class="filter-group">
+                    <label>Status:</label>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+
+                <div class="filter-group">
+                    <label>Priority:</label>
+                    <button class="priority-filter" data-priority="all">All</button>
+                    <button class="priority-filter high" data-priority="high">High</button>
+                    <button class="priority-filter medium" data-priority="medium">Medium</button>
+                    <button class="priority-filter low" data-priority="low">Low</button>
+                </div>
+
+                <div class="filter-group">
+                    <label>Sort By:</label>
+                    <select id="sortBy" class="sort-select">
+                        <option value="date-added">Date Added</option>
+                        <option value="due-date">Due Date</option>
+                        <option value="priority">Priority</option>
+                        <option value="alphabetical">A-Z</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Todo List -->
             <ul id="todoList" class="todo-list">
-                <!-- Todos will be added here by JavaScript -->
+                <!-- Todos will be added here -->
             </ul>
 
-            <!-- Stats -->
-            <div class="stats">
-                <span id="todoCount">0</span> tasks remaining
+            <!-- Export/Import Section -->
+            <div class="actions-section">
+                <button id="exportBtn" class="action-btn">📥 Export</button>
+                <button id="importBtn" class="action-btn">📤 Import</button>
+                <button id="clearAllBtn" class="action-btn danger">🗑️ Clear All</button>
             </div>
         </div>
     </div>
